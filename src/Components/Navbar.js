@@ -4,7 +4,7 @@ import Logo from '../assets/Logo.svg'
 import toast from 'react-hot-toast'
 
 const Navbar = (props) => {
-  let isLoggedin = props.isLoggedin;
+  let isLoggedin = props.isLoggedIn;
   let setisLoggedIn = props.setisLoggedIn;
   return (
     <div className='flex justify-evenly'>
