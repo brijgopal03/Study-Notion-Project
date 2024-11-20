@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import PrivateRoute from "./Components/PrivateRoute";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Home from "./pages/Home"
@@ -12,14 +13,18 @@ function App() {
 const [isLoggedIn, setisLoggedIn] = useState(false)
    
   return (
-    <div>
+    <div className="w-screen h-screen bg-richblack-900 flex flex-col">
     <Navbar isLoggedIn = {isLoggedIn} setisLoggedIn = {setisLoggedIn} />
 
 
 <Routes>
-  <Route path="/" element = {<Home/>} />
+  <Route path="/" element = {<Home isLoggedIn = {isLoggedIn}/>} />
   <Route path="/login" element = {<Login setisLoggedIn={setisLoggedIn}/>} />
-  <Route path="/dashboard" element = {<Dashboard/>} />
+  <Route path="/dashboard" element = {
+    <PrivateRoute isLoggedIn = {isLoggedIn}>
+      <Dashboard/>
+    </PrivateRoute>
+  } />
   <Route path="/signup" element = {<Signup setisLoggedIn={setisLoggedIn}/>} />
 
 </Routes>
